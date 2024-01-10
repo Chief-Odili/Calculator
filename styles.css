@@ -1,0 +1,102 @@
+/* CSS for Calculator Program */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif; /* Setting the font family for the entire document */
+    margin: 0; /* Removing default margin */
+    display: flex;
+    justify-content: center; /* Centering content horizontally */
+    align-items: center; /* Centering content vertically */
+    height: 100vh; /* Making the body take the full height of the viewport */
+    background-color: #f3f3f3; /* Setting background color */
+  }
+  
+  /* Calculator container styles */
+  .container {
+    display: grid; /* Using CSS grid for layout */
+    grid-template-columns: repeat(4, 80px); /* Grid columns with equal widths */
+    grid-gap: 10px; /* Spacing between grid elements */
+    padding: 20px; /* Padding inside the container */
+    background-color: #fff; /* Background color of the container */
+    border-radius: 10px; /* Adding rounded corners to the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow effect */
+  }
+  
+  /* Output display styles */
+  .output {
+    grid-column: 1 / -1; /* Spans across all columns */
+    background-color: #f0f0f0; /* Background color for the output display */
+    border-radius: 5px; /* Adding rounded corners */
+    padding: 10px; /* Padding inside the output display */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Spacing between elements */
+    align-items: flex-end; /* Aligning items to the right */
+  }
+  
+  /* Styling for previous operation display */
+  .previousOperationDisplay {
+    color: #666; /* Setting text color */
+    font-size: 18px; /* Font size for previous operation display */
+    margin-bottom: 5px; /* Adding margin at the bottom */
+  }
+  
+  /* Styling for current operation display */
+  .currentOperationDisplay {
+    color: #333; /* Setting text color */
+    font-size: 24px; /* Font size for current operation display */
+  }
+  
+  /* Button styles */
+  button {
+    padding: 10px; /* Adding padding inside the buttons */
+    font-size: 18px; /* Setting font size */
+    border: none; /* Removing default border */
+    outline: none; /* Removing outline on focus */
+    cursor: pointer; /* Changing cursor to pointer on hover */
+    border-radius: 5px; /* Adding rounded corners to buttons */
+    transition: background-color 0.3s ease; /* Adding transition effect */
+  }
+  
+  /* Button hover styles */
+  button:hover {
+    background-color: #f0f0f0; /* Changing background color on hover */
+  }
+  
+  /* Styles for specific buttons using data attributes */
+  [data-all-clear] {
+    grid-column: span 2; /* Spans across 2 columns */
+    background-color: #f78c6c; /* Background color for the "AC" button */
+    color: white; /* Text color */
+  }
+  
+  [data-equals] {
+    grid-column: span 2; /* Spans across 2 columns */
+    background-color: #5cdb95; /* Background color for the "=" button */
+    color: white; /* Text color */
+  }
+  
+  [data-operation] {
+    background-color: #4b7bec; /* Background color for operation buttons */
+    color: white; /* Text color */
+  }
+  
+  [data-delete] {
+    background-color: #f3a683; /* Background color for the "DEL" button */
+    color: white; /* Text color */
+  }
+  
+  /* Responsive design */
+  @media screen and (max-width: 600px) {
+    .container {
+      grid-template-columns: repeat(3, 60px); /* Adjusting columns for smaller screens */
+      grid-gap: 8px; /* Adjusting grid gap */
+      padding: 15px; /* Adjusting padding */
+    }
+  
+    button {
+      padding: 8px; /* Adjusting button padding */
+      font-size: 16px; /* Adjusting font size */
+    }
+  }
+  
