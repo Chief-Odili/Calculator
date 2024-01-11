@@ -1,102 +1,171 @@
-/* CSS for Calculator Program */
-
-/* Global styles */
-body {
-    font-family: Arial, sans-serif; /* Setting the font family for the entire document */
-    margin: 0; /* Removing default margin */
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+html,
+body{
+    height: 100%;
+    line-height: 1;
+    font-size: 16px;
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+}
+.wrapper{
+    background-color: lightgray;
+    overflow: hidden;
+    width: 100%;
     display: flex;
-    justify-content: center; /* Centering content horizontally */
-    align-items: center; /* Centering content vertically */
-    height: 100vh; /* Making the body take the full height of the viewport */
-    background-color: #f3f3f3; /* Setting background color */
-  }
-  
-  /* Calculator container styles */
-  .container {
-    display: grid; /* Using CSS grid for layout */
-    grid-template-columns: repeat(4, 80px); /* Grid columns with equal widths */
-    grid-gap: 10px; /* Spacing between grid elements */
-    padding: 20px; /* Padding inside the container */
-    background-color: #fff; /* Background color of the container */
-    border-radius: 10px; /* Adding rounded corners to the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow effect */
-  }
-  
-  /* Output display styles */
-  .output {
-    grid-column: 1 / -1; /* Spans across all columns */
-    background-color: #f0f0f0; /* Background color for the output display */
-    border-radius: 5px; /* Adding rounded corners */
-    padding: 10px; /* Padding inside the output display */
-    display: flex;
+    justify-content: center;
     flex-direction: column;
-    justify-content: space-between; /* Spacing between elements */
-    align-items: flex-end; /* Aligning items to the right */
-  }
+    align-items: center;
+}
+.calculator{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 400px;
+    height: 550px;
+    padding: 10px;
+    border-radius: 30px;
+}
+.display{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 15px;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 380px;
+    height: 120px;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: -1px 1px gray,
+                -2px 2px gray,
+                -3px 3px gray,
+                -4px 4px gray;
+    overflow: hidden;
+}
+#calculation{
+    font-family: inherit;
+    color: gray;
+    font-size: 18px;
+}
+#result{
+    font-family: inherit;
+    font-size: 40px;
+}
+#buttons{
+    margin-top: 10px;
+    width: 380px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "clear clear remove divide"
+                         "seven eight nine times"
+                         "four five six minus"
+                         "one two three plus"
+                         "zero dot equals equals";
+    grid-auto-rows: 70px;
+    gap: 10px;
+}
+.button{
+    font-size: 30px;
+    border-radius: 20px;
+    color: gray;
+    font-family: inherit;
+    background-color: rgb(243, 243, 243);
+    box-shadow: -1px 1px gray,
+                -2px 2px gray,
+                -3px 3px gray,
+                -4px 4px gray;
+    transition: 0.1s;
+    outline: none;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: rgba(138, 154, 158, 0.404);
+}
+#clear-button{
+    grid-area: clear;
+    background-color: rgb(174, 25, 25);
+    color: white;
+}
+#clear-button:hover{
+    background-color: rgb(221, 114, 114);
+    color: white;
+}
+#remove-button{
+  background-color: rgb(174, 25, 25);
+  color: white;
+}
+#remove-button:hover{
+    background-color:  rgb(221, 114, 114);
+    color: white;
+}
+#equals{
+  grid-column: span 2;
+  background-color: rgb(24, 133, 69);
+  color: white;
+}
+
+#zero{
+    grid-area: zero;
+}
+.button.operation:hover{
+    background-color: rgb(153, 179, 235);
+    color: white;
+}
+#equals:hover{
+    background-color: rgb(83, 255, 83);
+    color: white;
+}
+
+.button.operation{
+  background-color: rgb(18, 18, 251);
+  color: white;
   
-  /* Styling for previous operation display */
-  .previousOperationDisplay {
-    color: #666; /* Setting text color */
-    font-size: 18px; /* Font size for previous operation display */
-    margin-bottom: 5px; /* Adding margin at the bottom */
-  }
-  
-  /* Styling for current operation display */
-  .currentOperationDisplay {
-    color: #333; /* Setting text color */
-    font-size: 24px; /* Font size for current operation display */
-  }
-  
-  /* Button styles */
-  button {
-    padding: 10px; /* Adding padding inside the buttons */
-    font-size: 18px; /* Setting font size */
-    border: none; /* Removing default border */
-    outline: none; /* Removing outline on focus */
-    cursor: pointer; /* Changing cursor to pointer on hover */
-    border-radius: 5px; /* Adding rounded corners to buttons */
-    transition: background-color 0.3s ease; /* Adding transition effect */
-  }
-  
-  /* Button hover styles */
-  button:hover {
-    background-color: #f0f0f0; /* Changing background color on hover */
-  }
-  
-  /* Styles for specific buttons using data attributes */
-  [data-all-clear] {
-    grid-column: span 2; /* Spans across 2 columns */
-    background-color: #f78c6c; /* Background color for the "AC" button */
-    color: white; /* Text color */
-  }
-  
-  [data-equals] {
-    grid-column: span 2; /* Spans across 2 columns */
-    background-color: #5cdb95; /* Background color for the "=" button */
-    color: white; /* Text color */
-  }
-  
-  [data-operation] {
-    background-color: #4b7bec; /* Background color for operation buttons */
-    color: white; /* Text color */
-  }
-  
-  [data-delete] {
-    background-color: #f3a683; /* Background color for the "DEL" button */
-    color: white; /* Text color */
-  }
-  
-  /* Responsive design */
-  @media screen and (max-width: 600px) {
-    .container {
-      grid-template-columns: repeat(3, 60px); /* Adjusting columns for smaller screens */
-      grid-gap: 8px; /* Adjusting grid gap */
-      padding: 15px; /* Adjusting padding */
+}
+.button:active{
+    box-shadow: none;
+    transform: translate(-4px, 4px);
+    outline: none;
+}
+footer{
+    position: fixed;
+    width: 100vw;
+    text-align: center;
+    bottom: 0;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    font-family: inherit;
+    font-size: 20px;
+    color: gray;
+    background-color: white;
+}
+@media (max-width:400px){
+    .calculator{
+        width: 100vw;
     }
-  
-    button {
-      padding: 8px; /* Adjusting button padding */
-      font-size: 16px; /* Adjusting font size */
+    .display{
+        width: 99%;
     }
-  }
-  
+    #calculation{
+        font-size: 15px;
+    }
+    #result{
+        font-size: 30px;
+    }
+    #buttons{
+        width: 99%;
+    }
+    .button{
+        font-size: 26px;
+    }
+    footer{
+        font-size: 15px;
+    }
+}
